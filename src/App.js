@@ -8,7 +8,9 @@ function App() {
   return (
     <Router>
       <div>
-        <Hero backgroundImage="./teamwork.jpg" />
+        <Hero backgroundImage="./teamwork.jpg">
+          <h1>My Employee Dashboard</h1>
+        </Hero>
 
       </div>
     </Router>
