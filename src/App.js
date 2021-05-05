@@ -6,7 +6,7 @@ import Hero from "./components/Hero"
 
 
 function App() {
-  const [employee, setShowModal] = useState(undefined);
+  const [employee, setShowModal] = useState();
 
   const handleClose = () => setShowModal(undefined);
   const handleShow = (employee) => setShowModal(employee);
@@ -19,7 +19,7 @@ function App() {
 
       <EmployeeContainer showModal={handleShow} />
 
-      <Modal show={!!employee} onHide={handleClose}>
+      <Modal show={employee} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{employee?.name.first}{employee?.name.last}</Modal.Title>
         </Modal.Header>
