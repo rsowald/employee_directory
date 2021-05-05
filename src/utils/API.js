@@ -3,8 +3,9 @@ import axios from "axios";
 //allow user to change results parameter?
 //should I use seeds instead so it's always the same group?
 
-export default {
-    getEmployees: function () {
-        return axios.get("https://randomuser.me/api/?results=20exc=login")
-    }
-}
+const getEmployees = () => {
+    return axios.get("https://randomuser.me/api/?results=20&exc=login");
+};
+
+export default getEmployees;
+
