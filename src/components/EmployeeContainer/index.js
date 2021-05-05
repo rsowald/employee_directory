@@ -29,7 +29,7 @@ class EmployeeContainer extends Component {
                             <th>Employee ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Phone Number</th>
+                            <th>Email Address</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +38,7 @@ class EmployeeContainer extends Component {
                                 <td>{employee.id}</td>
                                 <td>{employee.name.first}</td>
                                 <td>{employee.name.last}</td>
-                                <td>{employee.phone}</td>
+                                <td>{employee.email}</td>
                             </tr>
                         )}
                     </tbody>
