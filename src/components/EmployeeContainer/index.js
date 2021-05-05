@@ -21,7 +21,6 @@ class EmployeeContainer extends Component {
     };
 
     render() {
-
         return (
             <div className="container-fluid">
                 <Table bordered hover>
@@ -35,7 +34,7 @@ class EmployeeContainer extends Component {
                     </thead>
                     <tbody>
                         {this.state.employees.map(employee =>
-                            <tr key={employee.id}>
+                            <tr key={employee.id} onClick={() => this.props.showModal(employee)}>
                                 <td>{employee.id}</td>
                                 <td>{employee.name.first}</td>
                                 <td>{employee.name.last}</td>
@@ -49,4 +48,4 @@ class EmployeeContainer extends Component {
     }
 }
 
-export default EmployeeContainer
+export default EmployeeContainer;

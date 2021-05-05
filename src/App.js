@@ -6,37 +6,33 @@ import Hero from "./components/Hero"
 
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
+  const [employee, setShowModal] = useState(undefined);
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(undefined);
+  const handleShow = (employee) => setShowModal(employee);
 
   return (
     <div>
       <Hero backgroundImage="./teamwork.jpg">
         <h1>My Employee Dashboard</h1>
       </Hero>
-      <EmployeeContainer />
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Employee Names will be modal triggers
-      </Button>
 
-        <Modal show={showModal} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Employee Name Here</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>All of the employee info</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
+      <EmployeeContainer showModal={handleShow} />
+
+      <Modal show={!!employee} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{employee?.name.first}{employee?.name.last}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>All of the employee info</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
           </Button>
-            <Button variant="danger" onClick={handleClose}>
-              Remove Employee
+          <Button variant="danger" onClick={handleClose}>
+            Remove Employee
           </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
