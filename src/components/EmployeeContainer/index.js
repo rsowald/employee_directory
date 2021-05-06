@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+
 import getEmployees from "../../utils/API";
+import BootstrapTable from 'react-bootstrap-table-next';
 
 class EmployeeContainer extends Component {
     state = {
@@ -21,28 +22,29 @@ class EmployeeContainer extends Component {
     };
 
     render() {
+
+        const columns = [{
+            dataField: 'id',
+            text: 'Employee ID',
+            sort: true
+        }, {
+            dataField: 'name.first',
+            text: 'First Name',
+            sort: true
+        }, {
+            dataField: 'name.last',
+            text: 'Last Name',
+            sort: true
+        }];
+
         return (
             <div className="container-fluid">
-                <Table bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Employee ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.employees.map(employee =>
-                            <tr key={employee.id} onClick={() => this.props.showModal(employee)}>
-                                <td>{employee.id}</td>
-                                <td>{employee.name.first}</td>
-                                <td>{employee.name.last}</td>
-                                <td>{employee.email}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </Table>
+                <BootstrapTable
+                    keyField="id"
+                    data={this.state.employees}
+                    columns={columns}
+
+                />
             </div>
         );
     }

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import EmployeeContainer from "./components/EmployeeContainer";
 import Hero from "./components/Hero";
-import EmployeeModal from "./components/EmployeeModal"
+import EmployeeModal from "./components/EmployeeModal";
+
 
 
 function App() {
