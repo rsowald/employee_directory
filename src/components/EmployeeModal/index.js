@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import dateFormat from "dateformat";
+import "./style.css"
 
 function EmployeeModal(props) {
 
@@ -11,10 +12,15 @@ function EmployeeModal(props) {
                 <Modal.Title>{props.employee?.name.first} {props.employee?.name.last}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <img className="mr-1 center block" src={props.employee?.picture.large} alt="portrait"></img>
-          Birthday: {dateFormat(props.employee?.dob.date, "longDate")}<br />
-          Phone: {props.employee?.phone}<br />
-          Cell: {props.employee?.cell}
+                <div className="row">
+                    <div className="col-4"><img src={props.employee?.picture.large} alt="portrait"></img></div>
+                    <div className="col-8">
+                        Birthday: {dateFormat(props.employee?.dob.date, "longDate")}<br />
+                        Email: {props.employee?.email}<br />
+                        Phone: {props.employee?.phone}<br />
+                        Cell: {props.employee?.cell}
+                    </div>
+                </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.handleClose}>
