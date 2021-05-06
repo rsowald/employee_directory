@@ -37,13 +37,20 @@ class EmployeeContainer extends Component {
             sort: true
         }];
 
+        const rowEvents = {
+            onClick: (_, employee) => {
+                this.props.showModal(employee);
+            }
+        };
+
         return (
             <div className="container-fluid">
                 <BootstrapTable
+                    bootstrap4
                     keyField="id"
                     data={this.state.employees}
                     columns={columns}
-
+                    rowEvents={rowEvents}
                 />
             </div>
         );
