@@ -1,25 +1,9 @@
 import React, { Component } from "react";
 
-import getEmployees from "../../utils/API";
 import BootstrapTable from 'react-bootstrap-table-next';
 
 class EmployeeContainer extends Component {
-    state = {
-        employees: [],
-        sort: ""
-    };
 
-    componentDidMount = () => {
-        getEmployees()
-            .then((res) => {
-                const employees = res.data.results.map((employee, i) => ({
-                    ...employee,
-                    id: i + 1
-                }));
-                this.setState({ employees })
-            })
-            .catch(err => console.log(err));
-    };
 
     render() {
 
@@ -48,7 +32,7 @@ class EmployeeContainer extends Component {
                 <BootstrapTable
                     bootstrap4
                     keyField="id"
-                    data={this.state.employees}
+                    data={this.props.allEmployees}
                     columns={columns}
                     rowEvents={rowEvents}
                 />
