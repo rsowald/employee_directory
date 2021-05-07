@@ -15,6 +15,10 @@ function App() {
 
   const handleClose = () => setShowModal(undefined);
   const handleShow = (employee) => setShowModal(employee);
+  const handleDelete = (employee) => {
+    setAllEmployees(allEmployees.filter(e => e.id !== employee.id));
+    handleClose();
+  };
 
   useEffect(() => {
     getEmployees()
@@ -41,13 +45,13 @@ function App() {
         <h1>My Employee Dashboard</h1>
       </Hero>
       <div className="row">
-        <div className="col-3">
+        <div className="col-sm-12 col-md-3">
           <Search search={searchValue} handleInputChange={e => { setSearchValue(e.target.value) }} />
         </div>
-        <div className="col-9">
+        <div className="col-sm-12 col-md-9">
           <EmployeeContainer showModal={handleShow} allEmployees={searchValue.length ? filteredEmployees : allEmployees} />
         </div>
-        <EmployeeModal employee={employee} handleClose={handleClose} />
+        <EmployeeModal employee={employee} handleClose={handleClose} handleDelete={handleDelete} />
       </div>
     </div>
   );

@@ -4,9 +4,7 @@ import dateFormat from "dateformat";
 import "./style.css"
 
 function EmployeeModal(props) {
-
     return (
-
         <Modal show={!!props.employee} onHide={props.handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>{props.employee?.name.first} {props.employee?.name.last}</Modal.Title>
@@ -25,13 +23,12 @@ function EmployeeModal(props) {
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.handleClose}>
                     Close
-          </Button>
-                <Button variant="danger" onClick={props.handleClose}>
+                </Button>
+                <Button variant="danger" onClick={() => props.handleDelete(props.employee)}>
                     Remove Employee
-          </Button>
+                </Button>
             </Modal.Footer>
         </Modal>
-
     );
 }
 
