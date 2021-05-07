@@ -16,7 +16,6 @@ function App() {
   const handleClose = () => setShowModal(undefined);
   const handleShow = (employee) => setShowModal(employee);
 
-
   useEffect(() => {
     getEmployees()
       .then((res) => {
@@ -32,9 +31,9 @@ function App() {
 
   useEffect(() => {
     setFilteredEmployees(allEmployees.filter((employee) => {
-      employee.name.first.includes(searchValue) || employee.name.last.includes(searchValue) || employee.email.includes(searchValue)
+      return employee.name.first.includes(searchValue) || employee.name.last.includes(searchValue) || employee.email.includes(searchValue)
     }))
-  }, [searchValue]);
+  }, [searchValue, allEmployees]);
 
   return (
     <div className="container-fluid">
@@ -43,7 +42,7 @@ function App() {
       </Hero>
       <div className="row">
         <div className="col-3">
-          <Search search={searchValue} handleInputChange={(e) => setSearchValue(e.target.value)} />
+          <Search search={searchValue} handleInputChange={e => { setSearchValue(e.target.value) }} />
         </div>
         <div className="col-9">
           <EmployeeContainer showModal={handleShow} allEmployees={searchValue.length ? filteredEmployees : allEmployees} />
