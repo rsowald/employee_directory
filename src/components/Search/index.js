@@ -3,7 +3,6 @@ import "./style.css"
 
 function Search(props) {
     return (
-
         <div className="form-group">
             <label htmlFor="search">Employee Search:</label>
             <input
@@ -15,9 +14,7 @@ function Search(props) {
                 placeholder="Search by name or email"
                 id="search"
             />
-
         </div>
-
     );
 }
 
