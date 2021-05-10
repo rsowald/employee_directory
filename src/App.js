@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import EmployeeModal from "./components/EmployeeModal";
 import Search from "./components/Search";
 import getEmployees from "./utils/API";
+import Guide from "./components/Guide";
 
 
 
@@ -41,11 +42,12 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <Hero backgroundImage="./images/teamwork.jpg">
+      <Hero >
         <h1>My Employee Dashboard</h1>
       </Hero>
       <div className="row">
         <div className="col-sm-12 col-md-3">
+          <Guide />
           <Search search={searchValue} handleInputChange={e => { setSearchValue(e.target.value) }} />
         </div>
         <div className="col-sm-12 col-md-9">
